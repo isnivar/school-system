@@ -5,6 +5,7 @@ import { COLORS, types } from '../utils/utils';
 import { AuthContext } from '../auth/AuthContext';
 // import { Footer } from '../../components/ui/Footer';
 import { ROL } from '../utils/utils';
+import logo from '../assets/logo.png';
 
 const Login = ({history}) => {
 
@@ -72,6 +73,9 @@ const Login = ({history}) => {
     return (
         <>
             <div className="container-xxl">
+                <div className="ms-5 mt-5 mb-4">
+                    <img src={logo} className="img-fluid" alt="BEDU" style={{'width': '400px'}}/>
+                </div>
                 <div className="float-end me-5 mt-5" style={{width: '30rem'}}>
                     <div className="fluid-container">
                         <form onSubmit={handleSubmit}>

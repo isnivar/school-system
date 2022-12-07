@@ -4,13 +4,12 @@ export const types = {
 }
 
 export const COLORS = {
-    primaryColor: '#355A9F',
-    lightPrimaryColor: '#809CB8',
+    primaryColor: '#0E1418',
+    lightPrimaryColor: '#25333F',
     separatorColor: '#B4BBBB',
-    secondaryColor: '#F4CC23',
-    lightSecondaryColor: '#F7DF6E',
-    ultraLightSecondaryColor: '#FEF4C2',
-    colorAux: '#9F355A'
+    secondaryColor: '#F65D27',
+    lightSecondaryColor: '#F98F6A',
+    ultraLightSecondaryColor: '#FEE8E0'
 }
 
 export const ROL = {
@@ -26,4 +25,9 @@ export const ROL = {
         name: 'Operador',
         type:'3'
     }
+}
+
+export const CONSTANTS = {
+    REGISTER: 'Register',
+    WATCH: 'Watch'
 }
