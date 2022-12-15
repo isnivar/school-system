@@ -5,6 +5,8 @@ import { COLORS, types } from '../utils/utils';
 import { AuthContext } from '../auth/AuthContext';
 // import { Footer } from '../../components/ui/Footer';
 import { ROL } from '../utils/utils';
+import logo from '../assets/logo.png';
+import { login } from '../utils/requests';
 
 const Login = ({history}) => {
 
@@ -31,55 +33,40 @@ const Login = ({history}) => {
             if(value.level === 'rol'){
                 alert('Usted no ha seleccionado su rol');
             }else{
-                console.log("logged");
-                // login(value.username, value.pass, value.level).then((val)=>{
-                //     if(val != null){
-                //         dispatch({
-                //             type: types.login,
-                //             payload:{
-                //                 id: val.id,
-                //                 name: val.name,
-                //                 lastF: val.lastF
-                //             }
-                //         });
-                //         history.replace(lastPath);
-                //     }else{
-                //         setValue({
-                //             ...value,
-                //             hasAuth: false
-                //         })
-                //     }
-                // });
-                if(value.username === 'isnivar' && value.pass === '123'){
-                    dispatch({
-                        type: types.login,
-                        payload:{
-                            id:123,
-                            name: 'Israel',
-                            lastF: 'Vallejo'
-                        }
-                    });
-                }else{
-                    setValue({
-                        ...value,
-                        hasAuth: false
-                    })
-                }
+                login(value.username, value.pass, value.level).then((val)=>{
+                    if(val != null){
+                        dispatch({
+                            type: types.login,
+                            payload:{
+                                id: val.id,
+                                name: val.name
+                            }
+                        });
+                    }else{
+                        setValue({
+                            ...value,
+                            hasAuth: false
+                        })
+                    }
+                });
             }
         }
     }
 
     return (
         <>
-            <div className="container-xxl">
-                <div className="float-end me-5 mt-5" style={{width: '30rem'}}>
+            <div className="container-fluid bg-dark p-3" style={{'height': '1000px'}}>
+                <div className="ms-5 mt-5 mb-4 ps-5">
+                    <img src={logo} className="img-fluid img-thumbnail" alt="BEDU" style={{'width': '400px'}}/>
+                </div>
+                <div className="float-end me-5 mt-5 p-3 border" style={{width: '30rem'}}>
                     <div className="fluid-container">
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
-                                <label className="form-label" style={{color: COLORS.primaryColor, fontSize: '20px'}}>Usuario</label>
-                                <input 
-                                    type="text" 
-                                    className="form-control" 
+                                <label className="form-label" style={{color: COLORS.secondaryColor, fontSize: '20px'}}>Usuario</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
                                     name="username"
                                     autoComplete="off"
                                     value={value.username}
@@ -88,9 +75,9 @@ const Login = ({history}) => {
                                 />
                             </div>
                             <div className="mb-3">
-                                <label className="form-label" style={{color: COLORS.primaryColor, fontSize: '20px'}}>Contraseña</label>
-                                <input 
-                                    type="password" 
+                                <label className="form-label" style={{color: COLORS.secondaryColor, fontSize: '20px'}}>Contraseña</label>
+                                <input
+                                    type="password"
                                     className="form-control"
                                     name="pass"
                                     id="inputPass"
@@ -101,29 +88,36 @@ const Login = ({history}) => {
                             </div>
                             <div className="mb-3">
                                 <select className="form-select" name="level" onChange={handleChange}>
-                                    <option 
-                                        defaultValue key="rol" 
+                                    <option
+                                        defaultValue key="rol"
                                         value="rol"
                                     >
                                             Seleccione su rol
                                     </option>
-                                    <option 
-                                        key={ROL.admin.name}
-                                        value={ROL.admin.type}
+                                    <option
+                                        key={ROL.director.name}
+                                        value={ROL.director.type}
                                     >
                                         Director
                                     </option>
-                                    <option 
-                                        key={ROL.admon.name} 
-                                        value={ROL.admon.type}
+                                    <option
+                                        key={ROL.administrador.name}
+                                        value={ROL.administrador.type}
                                     >
                                         Administrativo
                                     </option>
+                                    <option
+                                        key={ROL.maestro.name}
+                                        value={ROL.maestro.type}
+                                    >
+                                        Maestro
+                                    </option>
                                 </select>
                             </div>
-                            <button 
-                                type="submit" 
-                                className="btn btn-primary"
+                            <button
+                                type="submit"
+                                className="btn"
+                                style={{'backgroundColor': COLORS.secondaryColor, 'color': 'white'}}
                             >
                                 Ingresar
                             </button>
@@ -137,9 +131,6 @@ const Login = ({history}) => {
                     }
                 </div>
             </div>
-            {/* <div className="fixed-bottom w-75">
-                <Footer />
-            </div> */}
         </>
     )
 }

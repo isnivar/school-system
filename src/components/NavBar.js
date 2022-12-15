@@ -1,9 +1,9 @@
 import React, { useContext} from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { AuthContext } from '../auth/AuthContext'
 import { COLORS } from '../utils/utils';
 import { types } from '../utils/utils';
-
+import {AiOutlineHome} from 'react-icons/ai';
 
 export const NavBar = () => {
 
@@ -21,7 +21,11 @@ export const NavBar = () => {
         <nav 
             className="navbar navbar-expand bg-light"
         >
-
+            <div className="ps-3 pb-1">
+                <Link className="navbar-brand" to="/">
+                    <AiOutlineHome color={COLORS.primaryColor}/>
+                </Link>
+            </div>
             <div className="navbar-collapse container-fluid">
                 <div className="navbar-nav">
 
@@ -30,7 +34,7 @@ export const NavBar = () => {
                         className="nav-item nav-link"
                         style={{fontSize: '1rem', color: COLORS.primaryColor}}
                         exact
-                        to="/home"
+                        to="/attendance"
                     >
                         Asistencias
                     </NavLink>
