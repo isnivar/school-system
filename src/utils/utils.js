@@ -13,21 +13,25 @@ export const COLORS = {
 }
 
 export const ROL = {
-    admin: {
-        name: 'Administrador',
-        type:'1'
+    director: {
+        name: 'Director',
+        type: 1
     },
-    admon: {
+    administrador: {
         name: 'Administrativo',
-        type:'2'
+        type: 2
     },
-    deliver:{
-        name: 'Operador',
-        type:'3'
+    maestro:{
+        name: 'Maestro',
+        type: 3
     }
 }
 
 export const CONSTANTS = {
     REGISTER: 'Register',
     WATCH: 'Watch'
+}
+
+export const URLs = {
+    urlFake: 'https://students-fake.com'
 }
