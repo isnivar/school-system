@@ -25,7 +25,7 @@ export const AppRouter = () => {
                     <Route exact path="/home" element={<Home />}/>
                     <Route exact path="/employees" element={<Employees />}/>
                     <Route exact path="/students" element={<Students />}/>
-                    <Route exact path="/Attendance" element={<Attendance />}/>
+                    <Route exact path="/attendance" element={<Attendance />}/>
                 </Route>
                 <Route exact path= "/login" element={!user.logged ? <Login /> : <Navigate to='/'/>} />
                 <Route exact path="/404" element={<h1>404 Route Not Found</h1>}/>
